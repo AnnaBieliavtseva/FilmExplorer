@@ -1,0 +1,35 @@
+.nav {
+  border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+  padding: 10px 0;
+}
+.navItem {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 15px;
+  text-decoration: none;
+  color: black;
+}
+.navItem:last-child {
+  margin-right: 0;
+}
+
+.active {
+  color: rgb(138, 43, 226);
+}
+
+.text {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.btn {
+  display: block;
+  background-color: rgb(138, 43, 226, 0.5);
+  border-color: transparent;
+  border-radius: 5%;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px;
+  cursor: pointer;
+}

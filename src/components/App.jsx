@@ -1,33 +1,28 @@
-import { useEffect, useState } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import clsx from 'clsx';
-import css from './App.module.css';
-import HomePage from '../pages/HomePage';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from '../pages/HomePage/HomePage';
 import MoviesPage from '../pages/MoviesPage';
-import MoviesDetailsPage from '../pages/MoviesDetailspage';
+import MoviesDetailsPage from '../pages/MoviesDetailsPage/MoviesDetailsPage';
 import MovieCast from './MovieCast/MovieCast';
 import MovieReviews from './MovieReviews/MovieReviews';
 import NotFoundPage from '../pages/NotFoundPage';
-import fetchTrendingFilms from '../services/fetchTrendingFilms';
 import Navigation from './Navigation/Navigation';
+import css from './App.module.css'
 
 function App() {
   return (
     <>
-      <div className="container">
-        <Navigation />
+      <Navigation />
+      <div className={css.container}>
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/movies" element={<MoviesPage />}></Route>
+          <Route path="/movies/:movieId" element={<MoviesDetailsPage />}>
+            <Route path="cast" element={<MovieCast />}></Route>
+            <Route path="reviews" element={<MovieReviews />}></Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />}></Route>
+        </Routes>
       </div>
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/movies" element={<MoviesPage />}></Route>
-        <Route path="/movies/:movieId" element={<MoviesDetailsPage />}></Route>
-        <Route path="/movies/:movieId/cast" element={<MovieCast />}></Route>
-        <Route
-          path="/movies/:movieId/reviews"
-          element={<MovieReviews />}
-        ></Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
-      </Routes>
     </>
   );
 }

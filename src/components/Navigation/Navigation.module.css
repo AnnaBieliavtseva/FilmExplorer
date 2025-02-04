@@ -8,12 +8,13 @@
   font-weight: 500;
   margin-right: 15px;
   text-decoration: none;
-  color: black;
+  color: rgb(0, 0, 0);
 }
 .navItem:last-child {
   margin-right: 0;
 }
 
 .active {
-  color: blueviolet;
+  color: rgb(138, 43, 226);
 }
+
