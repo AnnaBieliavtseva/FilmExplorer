@@ -1,14 +1,24 @@
 import { NavLink } from "react-router-dom";
+import css from './MovieList.module.css'
 
 function MovieList({ films }) {
   return (
-    <div>
-      {films.map(({ id, original_title }) => (
-        <li key={id}>
-          <NavLink to={`/movies/${id}`}>{original_title}</NavLink>
+    <ul className={css.list}>
+      {films.map(({ id, title, poster_path }) => (
+        <li key={id} className={css.item}>
+          <NavLink to={`/movies/${id}`} className={css.link}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt=""
+              width={150}
+              height={200}
+              className={css.img}
+            />
+            <p className={css.text}>{title}</p>
+          </NavLink>
         </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

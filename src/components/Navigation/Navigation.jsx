@@ -14,7 +14,7 @@ function Navigation() {
           Home
         </NavLink>
         <NavLink to="/movies" className={navLinkCLass}>
-          MoviesPage
+          Movies
         </NavLink>
       </nav>
     </header>

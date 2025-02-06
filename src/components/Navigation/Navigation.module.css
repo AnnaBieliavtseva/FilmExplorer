@@ -1,20 +1,27 @@
 .nav {
-  border: 1px solid rgb(128, 128, 128, 0.5);
+  border-bottom: 1px solid rgb(128, 128, 128, 0.5);
   padding: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  text-align: center;
 }
 .navItem {
   font-size: 20px;
   font-weight: 500;
   margin-right: 15px;
+  color: rgb(224, 224, 224);
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  transition: color 0.3s ease;
+  
 }
 .navItem:last-child {
   margin-right: 0;
 }
 
-.active {
-  color: rgb(138, 43, 226);
+.navItem:hover,
+.navItem:focus {
+  color: rgb(187, 134, 252);
 }
 
+.active {
+  color: rgb(187, 134, 252);
+}

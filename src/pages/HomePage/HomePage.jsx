@@ -22,7 +22,7 @@ function HomePage() {
 
   return (
     <div className={css.container}>
-      <h2>Trending Today</h2>
+      <h2 className={css.title}>Trending Today</h2>
       <ul>
         <MovieList films={films}></MovieList>
       </ul>
