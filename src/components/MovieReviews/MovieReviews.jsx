@@ -2,35 +2,64 @@ import { useState, useEffect } from 'react';
 import { fetchFilmReviews } from '../../services/fetchFilms';
 import css from './MovieReviews.module.css';
 import { useParams } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
+import Loader from '../Loader/Loader';
 
 function MovieReviews() {
   const { movieId } = useParams();
-
   const [film, setFilm] = useState(null);
+  const [noReviews, setNoReviews] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     async function fetchFilmById() {
       try {
+        setLoading(true)
         const data = await fetchFilmReviews(movieId);
-        console.log('Fetched reviews:', data);
-
+        animateScroll.scrollTo(450, {
+          duration: 1000,
+          smooth: true,
+        });
         if (!data.results.length) {
-          console.log('ooooo');
-
-          return <h2>No reviews yet</h2>;
+          setNoReviews(true);
+        } else {
+          setFilm(data);
+          setNoReviews(false);
         }
-        setFilm(data);
       } catch (error) {
         console.log('Error fetching reviews:', error.message);
+      } finally {
+        setLoading(false)
       }
     }
 
     fetchFilmById();
   }, [movieId]);
-
-  if (!film) {
-    return <h2>Loading...</h2>;
+  if (noReviews) {
+    return <h2>No reviews yet</h2>;
   }
-  return <div>Reviews</div>;
+  if (!film) {
+    return <Loader/>
+  }
+  return (
+    <div>
+      {loading && <Loader />}
+      <ul className={css.list}>
+        {film.results.map(({ id, author, content, created_at }) => (
+          <li key={id} className={css.item}>
+            <p className={css.text}>
+              <span className={css.accent}> Author: </span> {author}
+            </p>
+            <p className={css.text}>
+              <span className={css.accent}> Date: </span>
+              {created_at.slice(0, 10)}
+            </p>
+            <p className={css.text}>{content}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default MovieReviews;

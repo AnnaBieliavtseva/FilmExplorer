@@ -8,8 +8,8 @@ function MovieList({ films }) {
         <li key={id} className={css.item}>
           <NavLink to={`/movies/${id}`} className={css.link}>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-              alt=""
+              src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '../../../public/Placeholder.png'}
+              alt={title}
               width={150}
               height={200}
               className={css.img}

@@ -2,10 +2,9 @@ import { useParams, NavLink, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import css from './MoviesDetailsPage.module.css';
-// import MovieCast from '../components/MovieCast/MovieCast'
-// import MovieReviews from '../components/MovieReviews/MovieReviews'
 import { fetchFilmsById } from '../../services/fetchFilms';
 import MovieDetail from '../../components/MovieDetail/MovieDetail';
+import Loader from '../../components/Loader/Loader';
 
 const navLinkCLass = ({ isActive }) => {
   return clsx(css.navItem, isActive && css.active);
@@ -13,17 +12,19 @@ const navLinkCLass = ({ isActive }) => {
 
 function MoviesDetailsPage() {
   const { movieId } = useParams();
-
+  const [loading, setLoading] = useState(false);
   const [film, setFilm] = useState(null);
 
   useEffect(() => {
     async function fetchFilmById() {
       try {
+        setLoading(true);
         const data = await fetchFilmsById(movieId);
-   
         setFilm(data);
       } catch (error) {
         console.log('Error fetching film by id:', error.message);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -31,11 +32,12 @@ function MoviesDetailsPage() {
   }, [movieId]);
 
   if (!film) {
-    return <h2>Loading...</h2>;
+    return <Loader/>
   }
   return (
     <div>
       <button className={css.btn}>Go back</button>
+      {loading && <Loader />}
       <MovieDetail film={film} />
       <p className={css.text}>Additional information:</p>
       <nav className={css.nav}>

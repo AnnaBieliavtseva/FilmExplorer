@@ -46,3 +46,12 @@ export const fetchFilmReviews = async movieId => {
 
   return data;
 };
+
+export const fetchFilmsBySearch = async userQuery => {
+  const { data } = await axios.get(
+    `/search/movie?include_adult=false&language=en-US&page=1&query=${userQuery}`,
+    options
+  );
+
+  return data;
+};

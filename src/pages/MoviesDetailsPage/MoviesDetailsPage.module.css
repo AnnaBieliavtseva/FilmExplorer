@@ -1,35 +1,49 @@
 .nav {
   border-bottom: 1px solid rgb(128, 128, 128, 0.5);
-  padding: 10px 0;
+  padding: 15px 0;
+  margin-bottom: 25px;
+  
 }
 .navItem {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   margin-right: 15px;
+  color: rgb(224, 224, 224);
   text-decoration: none;
-  color: black;
+  transition: color 0.3s ease;
+  
 }
 .navItem:last-child {
   margin-right: 0;
 }
 
+.navItem:hover,
+.navItem:focus {
+  color: rgb(187, 134, 252);
+}
+
 .active {
-  color: rgb(138, 43, 226);
+  color: rgb(187, 134, 252);
 }
 
 .text {
+  color: rgb(187, 134, 252);
   margin-top: 10px;
   font-size: 20px;
   font-weight: 500;
 }
 
 .btn {
-  display: block;
-  background-color: rgb(138, 43, 226, 0.5);
-  border-color: transparent;
-  border-radius: 5%;
-  font-size: 20px;
+  background-color: #bb86fc;
+  color: #121212;
   font-weight: 500;
-  padding: 10px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #9b6ef3;
 }
