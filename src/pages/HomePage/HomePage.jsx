@@ -13,7 +13,6 @@ function HomePage() {
       try {
         setLoading(true);
         const data = await fetchTrendingFilms();
-        console.log('Fetched films:', data);
         setFilms(data);
       } catch (error) {
         console.log('Error fetching films:', error.message);

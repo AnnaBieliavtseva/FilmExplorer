@@ -22,7 +22,7 @@ export default fetchTrendingFilms;
 
 export const fetchFilmsById = async movieId => {
   const { data } = await axios.get(`/movie/${movieId}?language=en-US`, options);
-  console.log(data);
+
 
   return data;
 };
@@ -32,8 +32,6 @@ export const fetchFilmCredits = async movieId => {
     `/movie/${movieId}/credits?language=en-US`,
     options
   );
-  console.log(data);
-
   return data;
 };
 
@@ -42,7 +40,6 @@ export const fetchFilmReviews = async movieId => {
     `/movie/${movieId}/reviews?language=en-US&page=1`,
     options
   );
-  console.log(data);
 
   return data;
 };

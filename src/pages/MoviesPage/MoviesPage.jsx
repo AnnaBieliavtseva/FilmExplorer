@@ -4,16 +4,23 @@ import { fetchFilmsBySearch } from '../../services/fetchFilms';
 import css from './MoviesPage.module.css';
 import { useState, useEffect } from 'react';
 import Loader from '../../components/Loader/Loader';
+import { useSearchParams } from 'react-router-dom';
 
 function MoviesPage() {
   const [films, setFilms] = useState(null);
-  const [userQuery, setUserQuery] = useState('');
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
+  
 
   function handleSumbit(evt) {
     evt.preventDefault();
     const inputValue = evt.target.elements.input.value.trim();
-    setUserQuery(inputValue);
+    if (!inputValue) {
+      return alert("OUu")
+    }
+    searchParams.set('query', inputValue);
+    setSearchParams(searchParams);
     evt.target.reset();
   }
 
@@ -21,9 +28,9 @@ function MoviesPage() {
     async function fetchFilmByUserQuery() {
       try {
         setLoading(true);
-        const data = await fetchFilmsBySearch(userQuery);
+        const data = await fetchFilmsBySearch(query);
         setFilms(data.results);
-        animateScroll.scrollToBottom({
+        animateScroll.scrollTo(400,{
           duration: 1000,
           smooth: true,
         });
@@ -35,7 +42,7 @@ function MoviesPage() {
     }
 
     fetchFilmByUserQuery();
-  }, [userQuery]);
+  }, [query]);
 
   if (!films) {
     return <Loader />;

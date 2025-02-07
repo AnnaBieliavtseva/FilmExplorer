@@ -1,5 +1,5 @@
-import { useParams, NavLink, Outlet } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useParams, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import css from './MoviesDetailsPage.module.css';
 import { fetchFilmsById } from '../../services/fetchFilms';
@@ -14,6 +14,8 @@ function MoviesDetailsPage() {
   const { movieId } = useParams();
   const [loading, setLoading] = useState(false);
   const [film, setFilm] = useState(null);
+  const location = useLocation();
+  const goBackUrl = useRef(location.state)
 
   useEffect(() => {
     async function fetchFilmById() {
@@ -36,7 +38,7 @@ function MoviesDetailsPage() {
   }
   return (
     <div>
-      <button className={css.btn}>Go back</button>
+      <NavLink to={goBackUrl.current} className={css.btn}>Go back</NavLink>
       {loading && <Loader />}
       <MovieDetail film={film} />
       <p className={css.text}>Additional information:</p>
