@@ -2,22 +2,29 @@ import MovieList from '../../components/MovieList/MovieList';
 import { animateScroll } from 'react-scroll';
 import { fetchFilmsBySearch } from '../../services/fetchFilms';
 import css from './MoviesPage.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Loader from '../../components/Loader/Loader';
 import { useSearchParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function MoviesPage() {
   const [films, setFilms] = useState(null);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
-  
 
   function handleSumbit(evt) {
     evt.preventDefault();
     const inputValue = evt.target.elements.input.value.trim();
     if (!inputValue) {
-      return alert("OUu")
+      toast('Please write something', {
+        icon: '📝',
+        style: {
+          backgroundColor: 'rgb(187, 134, 252)',
+          color: 'rgb(224, 224, 224)',
+          fontWeight: '500',
+        },
+      });
     }
     searchParams.set('query', inputValue);
     setSearchParams(searchParams);
@@ -30,7 +37,7 @@ function MoviesPage() {
         setLoading(true);
         const data = await fetchFilmsBySearch(query);
         setFilms(data.results);
-        animateScroll.scrollTo(400,{
+        animateScroll.scrollTo(400, {
           duration: 1000,
           smooth: true,
         });
@@ -44,7 +51,9 @@ function MoviesPage() {
     fetchFilmByUserQuery();
   }, [query]);
 
-  if (!films) {
+  const memoizedFilms = useMemo(() => films, [films]);
+
+  if (!memoizedFilms) {
     return <Loader />;
   }
 
@@ -57,7 +66,7 @@ function MoviesPage() {
         </button>
       </form>
       {loading && <Loader />}
-      <MovieList films={films}></MovieList>
+      <MovieList films={memoizedFilms}></MovieList>
     </div>
   );
 }

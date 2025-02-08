@@ -12,7 +12,7 @@ function MovieDetail({
             ? `https://image.tmdb.org/t/p/w500/${poster_path}`
             : `${placeholder}`
         }
-        alt={title}
+        alt={`Movie's title: ${title}`}
         width={320}
         height={440}
         className={css.img}

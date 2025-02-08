@@ -20,3 +20,16 @@
   font-size: 20px;
   color: rgb(187, 134, 252);
 }
+
+.readMore {
+  background: none;
+  border: none;
+  color: rgb(187, 134, 252);
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.readMore:hover {
+  text-decoration: underline;
+}

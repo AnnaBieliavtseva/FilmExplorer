@@ -56,7 +56,7 @@ function MovieCast() {
                   ? `https://image.tmdb.org/t/p/w500/${profile_path}`
                   : `${placeholder}`
               }
-              alt={name}
+              alt={`Actor's name: ${name}`}
               width={50}
               height={100}
               className={css.img}

@@ -4,6 +4,7 @@ import css from './MovieReviews.module.css';
 import { useParams } from 'react-router-dom';
 import { animateScroll } from 'react-scroll';
 import Loader from '../Loader/Loader';
+import ReviewItem from './ReviewItem';
 
 function MovieReviews() {
   const { movieId } = useParams();
@@ -46,16 +47,7 @@ function MovieReviews() {
       {loading && <Loader />}
       <ul className={css.list}>
         {film.results.map(({ id, author, content, created_at }) => (
-          <li key={id} className={css.item}>
-            <p className={css.text}>
-              <span className={css.accent}> Author: </span> {author}
-            </p>
-            <p className={css.text}>
-              <span className={css.accent}> Date: </span>
-              {created_at.slice(0, 10)}
-            </p>
-            <p className={css.text}>{content}</p>
-          </li>
+         <ReviewItem key={id} author={author} content={content} created_at={created_at}></ReviewItem>
         ))}
       </ul>
     </div>
