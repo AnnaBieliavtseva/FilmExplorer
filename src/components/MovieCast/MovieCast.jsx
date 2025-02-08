@@ -4,6 +4,7 @@ import { fetchFilmCredits } from '../../services/fetchFilms';
 import { useParams } from 'react-router-dom';
 import { animateScroll } from 'react-scroll';
 import Loader from '../Loader/Loader';
+import placeholder from '../../assets/Placeholder.png';
 
 function MovieCast() {
   const { movieId } = useParams();
@@ -53,7 +54,7 @@ function MovieCast() {
               src={
                 profile_path
                   ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-                  : '../../../public/Placeholder.png'
+                  : `${placeholder}`
               }
               alt={name}
               width={50}

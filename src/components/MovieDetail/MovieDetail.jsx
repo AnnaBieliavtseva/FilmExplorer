@@ -1,4 +1,5 @@
 import css from './MovieDetail.module.css';
+import placeholder from '../../assets/Placeholder.png';
 
 function MovieDetail({
   film: { title, release_date, poster_path, overview, vote_average, genres },
@@ -6,8 +7,12 @@ function MovieDetail({
   return (
     <div className={css.container}>
       <img
-        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-        alt=""
+        src={
+          poster_path
+            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+            : `${placeholder}`
+        }
+        alt={title}
         width={320}
         height={440}
         className={css.img}

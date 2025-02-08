@@ -15,7 +15,7 @@ function MoviesDetailsPage() {
   const [loading, setLoading] = useState(false);
   const [film, setFilm] = useState(null);
   const location = useLocation();
-  const goBackUrl = useRef(location.state)
+  const goBackUrl = useRef(location?.state ?? './movies')
 
   useEffect(() => {
     async function fetchFilmById() {
