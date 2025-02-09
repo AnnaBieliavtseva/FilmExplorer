@@ -6,10 +6,12 @@ import { useState, useEffect, useMemo } from 'react';
 import Loader from '../../components/Loader/Loader';
 import { useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function MoviesPage() {
   const [films, setFilms] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
@@ -25,6 +27,7 @@ function MoviesPage() {
           fontWeight: '500',
         },
       });
+      return;
     }
     searchParams.set('query', inputValue);
     setSearchParams(searchParams);
@@ -35,6 +38,7 @@ function MoviesPage() {
     async function fetchFilmByUserQuery() {
       try {
         setLoading(true);
+        setError(false);
         const data = await fetchFilmsBySearch(query);
         setFilms(data.results);
         animateScroll.scrollTo(400, {
@@ -52,6 +56,10 @@ function MoviesPage() {
   }, [query]);
 
   const memoizedFilms = useMemo(() => films, [films]);
+
+  if (error) {
+    return <NotFoundPage />;
+  }
 
   if (!memoizedFilms) {
     return <Loader />;

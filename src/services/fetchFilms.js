@@ -23,7 +23,6 @@ export default fetchTrendingFilms;
 export const fetchFilmsById = async movieId => {
   const { data } = await axios.get(`/movie/${movieId}?language=en-US`, options);
 
-
   return data;
 };
 

@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 :root {
   
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -37,3 +35,77 @@ img {
   max-width: 100%;
 }
 
+/* Navigation styles */
+
+.nav {
+  border-bottom: 1px solid rgb(128, 128, 128, 0.5);
+  padding: 15px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.navItem {
+  font-size: 24px;
+  font-weight: 500;
+  margin-right: 15px;
+  color: rgb(224, 224, 224);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+}
+.navItem:last-child {
+  margin-right: 0;
+}
+
+.navItem:hover,
+.navItem:focus {
+  color: rgb(187, 134, 252);
+}
+
+.active {
+  color: rgb(187, 134, 252);
+}
+
+
+/* Buttons styles */
+
+.btn {
+  width: 150px;
+  background-color: rgb(187, 134, 252);
+  color: #121212;
+  font-weight: 500;
+  border: none;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: rgb(155, 110, 243);
+}
+
+
+.upButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  background-color: rgb(187, 134, 252);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.upButton:hover {
+  background-color: rgb(155, 110, 243);
+}

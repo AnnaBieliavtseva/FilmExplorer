@@ -19,11 +19,9 @@
   border-color: #bb86fc;
   outline: none;
 }
-
 .btn {
   width: 150px;
-
-  background-color: #bb86fc;
+  background-color: rgb(187, 134, 252);
   color: #121212;
   font-weight: 500;
   border: none;
@@ -36,7 +34,7 @@
 
 .btn:hover,
 .btn:focus {
-  background-color: #9b6ef3;
+  background-color: rgb(155, 110, 243);
 }
 
 /* Styles for Tablet devices */

@@ -19,6 +19,7 @@
 
 .img {
   margin: 0 auto;
+  border-radius: 5%;
   margin-bottom: 15px;
 }
 
@@ -33,13 +34,8 @@
   }
   .img {
     margin-bottom: 0;
-    border-radius: 5%;
   }
   .thumb {
     margin-left: 15px;
   }
-}
-
-/* Styles for Desktop devices */
-@media screen and (min-width: 1440px) {
 }

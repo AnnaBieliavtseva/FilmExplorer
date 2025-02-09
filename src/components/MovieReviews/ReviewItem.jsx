@@ -13,7 +13,7 @@ function ReviewItem({ author, created_at, content }) {
       </p>
       <p className={css.text}>
         <span className={css.accent}> Date: </span>
-        {created_at.slice(0, 10)}
+        {new Date(created_at).toLocaleDateString()}
       </p>
       <p className={css.text}>
         {expanded ? content : `${content.slice(0, previewLength)}...`}
