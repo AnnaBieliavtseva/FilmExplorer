@@ -45,7 +45,7 @@ function MovieCast() {
           setnoInfoCast(false);
         }
 
-        animateScroll.scrollTo(450, {
+        animateScroll.scrollTo(550, {
           duration: 1000,
           smooth: true,
         });

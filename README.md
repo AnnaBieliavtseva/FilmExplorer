@@ -1,8 +1,6 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1>FilmExplorer 🗺️ </h1>
+<h2>FilmExplorer is a sleek and intuitive movie search application built with React. It allows users to search for films, view detailed descriptions, and explore trending movies with ease. Powered by an external API, it delivers a seamless and dynamic experience for movie enthusiasts.</h2>
 
-Currently, two official plugins are available:
+<p>🚀 Tech Stack: React, JavaScript, CSS, Fetch API, Vercel, Axios, React Router, React Hot Toast, React Loader Spinner, React Scroll </p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

@@ -38,7 +38,7 @@ function MovieReviews() {
         setLoading(true);
         setError(false);
         const data = await fetchFilmReviews(movieId);
-        animateScroll.scrollTo(450, {
+        animateScroll.scrollTo(550, {
           duration: 1000,
           smooth: true,
         });
